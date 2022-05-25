@@ -10,7 +10,7 @@ import retrofit2.http.Query
 /**
  * This is interface class contains all the API interface methods
  */
-interface BookAPIService {
+interface AudioBookAPIService {
     /**
      * Get the list of Audio Book
      * @return AudioBookResponse class which contains list of  Audio Book

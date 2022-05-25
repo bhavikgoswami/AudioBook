@@ -1,7 +1,7 @@
 package  com.book.audiobook.di
 
-import com.witnovus.book.network.BookAPIService
-import com.witnovus.book.utils.Constants
+import com.book.audiobook.network.AudioBookAPIService
+import com.book.audiobook.utils.Constants
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
@@ -33,12 +33,12 @@ object NetworkModule {
     }
 
     /**
-     * Provider of Book Api Service class
-     * @return bookApiService
+     * Provider of  Audio Book Api Service class
+     * @return AudioBookAPIService class
      */
     @Provides
     @Singleton
-    fun provideBookAPIService(): BookAPIService {
-        return provideRetrofit().create(BookAPIService::class.java)
+    fun provideBookAPIService(): AudioBookAPIService {
+        return provideRetrofit().create(AudioBookAPIService::class.java)
     }
 }
