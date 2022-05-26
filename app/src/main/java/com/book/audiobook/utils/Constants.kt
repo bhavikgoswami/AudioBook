@@ -6,7 +6,7 @@ package com.book.audiobook.utils
 class Constants {
     companion object {
         const val BASE_URL = "https://myaudiobook.000webhostapp.com/"
-        const val END_POINT_GET_BOOKS = " audiobook.php"
+        const val END_POINT_GET_BOOKS = "audiobook.php"
         const val IS_BOOK_FETCHED_FROM_API = "isBookFetchedFromAPI"
     }
 }
