@@ -4,6 +4,7 @@ package com.book.audiobook.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 @Entity(tableName = "audio_book_table")
 data class AudioBook(
@@ -21,4 +22,4 @@ data class AudioBook(
     val bookLanguage: String,
     @SerializedName("book_name")
     val bookName: String
-)
+) : Serializable

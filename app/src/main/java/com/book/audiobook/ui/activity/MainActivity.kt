@@ -3,19 +3,11 @@ package com.book.audiobook.ui.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.NavigationUI.setupWithNavController
-import androidx.navigation.ui.setupWithNavController
 import com.book.audiobook.R
 import com.book.audiobook.databinding.MainActivityBinding
-import com.book.audiobook.ui.fragment.HomeFragment
-import com.book.audiobook.ui.fragment.LibraryFragment
-import com.book.audiobook.ui.fragment.SearchFragment
-import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -47,6 +39,4 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.setupWithNavController(navController)
         NavigationUI.setupWithNavController(binding.bottomNavigationView, navController)*/
     }
-
-
 }

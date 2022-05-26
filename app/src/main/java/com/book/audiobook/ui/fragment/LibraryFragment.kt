@@ -11,7 +11,7 @@ import androidx.hilt.navigation.HiltViewModelFactory
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.book.audiobook.R
 import com.book.audiobook.databinding.LibraryFragmentBinding
@@ -22,7 +22,7 @@ import com.book.audiobook.viewmodel.AudioBookViewModel
 import com.witnovus.book.ui.adapters.AudioBookAdapter
 import io.paperdb.Paper
 
-class LibraryFragment : Fragment() ,AudioBookAdapter.OnItemClickListener {
+class LibraryFragment : Fragment(), AudioBookAdapter.OnItemClickListener {
 
     private lateinit var viewModel: AudioBookViewModel
     private lateinit var binding: LibraryFragmentBinding
@@ -50,7 +50,12 @@ class LibraryFragment : Fragment() ,AudioBookAdapter.OnItemClickListener {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_library, container, false) // Inflate the layout for this fragment
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_library,
+            container,
+            false
+        ) // Inflate the layout for this fragment
         return binding.root
     }
 
@@ -61,7 +66,10 @@ class LibraryFragment : Fragment() ,AudioBookAdapter.OnItemClickListener {
         // Instantiate the navController using the NavHostFragment
         navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
         val backStackEntry = navController.getBackStackEntry(R.id.nav_graph)
-        viewModel = ViewModelProvider(backStackEntry, HiltViewModelFactory(requireContext(), backStackEntry))[AudioBookViewModel::class.java]
+        viewModel = ViewModelProvider(
+            backStackEntry,
+            HiltViewModelFactory(requireContext(), backStackEntry)
+        )[AudioBookViewModel::class.java]
 
         // set RecyclerView
         setBookRecyclerView()
@@ -79,13 +87,16 @@ class LibraryFragment : Fragment() ,AudioBookAdapter.OnItemClickListener {
     private fun getBookListAPI() {
         // checks internet is connected or not
         if (!Utils.checkInternetConnection(requireContext())) {
-            Toast.makeText(requireContext(),
+            Toast.makeText(
+                requireContext(),
                 getString(R.string.msg_please_check_your_connection),
-                Toast.LENGTH_LONG).show()
+                Toast.LENGTH_LONG
+            ).show()
         }
         // set observer for BookList which gets from API
         if (!viewModel.bookList.hasObservers()) {
-            viewModel.bookList.observe(viewLifecycleOwner
+            viewModel.bookList.observe(
+                viewLifecycleOwner
             ) {
                 Utils.hideProgressDialog()
             }
@@ -103,8 +114,10 @@ class LibraryFragment : Fragment() ,AudioBookAdapter.OnItemClickListener {
     private fun setBookRecyclerView() {
 
         // click on book or read book navigate to bookDetails fragment
-        audioBookAdapter = AudioBookAdapter(requireContext(),
-            audioBookList!!, this@LibraryFragment)
+        audioBookAdapter = AudioBookAdapter(
+            requireContext(),
+            audioBookList!!, this@LibraryFragment
+        )
         binding.apply {
             audioBooksRecyclerView.setHasFixedSize(true)
             audioBooksRecyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -116,21 +129,22 @@ class LibraryFragment : Fragment() ,AudioBookAdapter.OnItemClickListener {
      * This method observes the book data from the database
      */
     private fun observeData() {
-        viewModel.bookLiveList!!.observe(viewLifecycleOwner
+        viewModel.bookLiveList!!.observe(
+            viewLifecycleOwner
         ) { updatedBookList: List<AudioBook?>? ->
             if (updatedBookList != null && updatedBookList.isNotEmpty()) {
                 audioBookList!!.clear()
                 audioBookList!!.addAll(updatedBookList)
 
                 audioBookAdapter.updateList(audioBookList!!)
-
             }
         }
     }
 
-    override fun onItemClick(view: View?, position: Int) {
-
+    override fun onItemClick(audioBook: AudioBook) {
+        val bundle = Bundle().apply {
+            putSerializable("audioBook", audioBook)
+        }
+        findNavController().navigate(R.id.action_libraryFragment_to_audioBookDetailFragment, bundle)
     }
-
-
 }
