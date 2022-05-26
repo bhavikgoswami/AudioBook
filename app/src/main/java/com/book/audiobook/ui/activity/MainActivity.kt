@@ -37,9 +37,11 @@ class MainActivity : AppCompatActivity() {
                 R.id.libraryFragment,
                 -> {
                     binding.bottomNavigationView.visibility = View.VISIBLE
+                    binding.mToolbar.visibility = View.VISIBLE
                 }
                 else -> {
                     binding.bottomNavigationView.visibility = View.GONE
+                    binding.mToolbar.visibility = View.GONE
                 }
             }
         }
