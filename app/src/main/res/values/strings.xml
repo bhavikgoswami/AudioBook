@@ -8,4 +8,10 @@
 
     <string name="msg_please_check_your_connection">Please, Check your Internet Connection</string>
     <string name="lbl_loading">Loading…</string>
+    <string name="lbl_my_books">My Books</string>
+    <string name="lbl_search_books_or_author">Search Books or Author...</string>
+    <string name="lbl_the_black_witch">The Black Witch</string>
+    <string name="lbl_laurie_forest">Laurie Forest</string>
+    <string name="ibl_harry_potter_and_the_sorc">Harry Potter and the Sorc...</string>
+    <string name="lbl_j_k_rowling">J.K. Rowling</string>
 </resources>

@@ -3,9 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Arrow Script/Projects/AudioBook/app/src/main/res/drawable/ic_arrow___down.xml" value="0.2" />
+        <entry key="..\:/Arrow Script/Projects/AudioBook/app/src/main/res/drawable/ic_arrow___down_square.xml" value="0.2" />
+        <entry key="..\:/Arrow Script/Projects/AudioBook/app/src/main/res/drawable/ic_document.xml" value="0.2" />
+        <entry key="..\:/Arrow Script/Projects/AudioBook/app/src/main/res/drawable/ic_home.xml" value="0.2" />
         <entry key="..\:/Arrow Script/Projects/AudioBook/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2" />
+        <entry key="..\:/Arrow Script/Projects/AudioBook/app/src/main/res/drawable/ic_logo.xml" value="0.121" />
+        <entry key="..\:/Arrow Script/Projects/AudioBook/app/src/main/res/drawable/ic_paper.xml" value="0.2" />
+        <entry key="..\:/Arrow Script/Projects/AudioBook/app/src/main/res/drawable/ic_upload.xml" value="0.2" />
+        <entry key="..\:/Arrow Script/Projects/AudioBook/app/src/main/res/drawable/shap_custom_edittext.xml" value="0.2" />
         <entry key="..\:/Arrow Script/Projects/AudioBook/app/src/main/res/drawable/splash_drawable.xml" value="0.2" />
+        <entry key="..\:/Arrow Script/Projects/AudioBook/app/src/main/res/layout/activity_main.xml" value="0.16032608695652173" />
+        <entry key="..\:/Arrow Script/Projects/AudioBook/app/src/main/res/layout/fragment_audio_book_detail.xml" value="0.12" />
+        <entry key="..\:/Arrow Script/Projects/AudioBook/app/src/main/res/layout/fragment_home.xml" value="0.18070652173913043" />
+        <entry key="..\:/Arrow Script/Projects/AudioBook/app/src/main/res/layout/fragment_library.xml" value="0.18070652173913043" />
         <entry key="..\:/Arrow Script/Projects/AudioBook/app/src/main/res/layout/progress_dialog.xml" value="0.18070652173913043" />
+        <entry key="..\:/Arrow Script/Projects/AudioBook/app/src/main/res/layout/row_library_books.xml" value="0.18070652173913043" />
+        <entry key="..\:/Arrow Script/Projects/AudioBook/app/src/main/res/menu/bottom_nav_menu.xml" value="0.20416666666666666" />
         <entry key="..\:/Arrow Script/Projects/AudioBook/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2" />
         <entry key="..\:/Arrow Script/Projects/AudioBook/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2" />
       </map>
