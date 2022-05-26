@@ -16,7 +16,9 @@ import com.book.audiobook.ui.fragment.HomeFragment
 import com.book.audiobook.ui.fragment.LibraryFragment
 import com.book.audiobook.ui.fragment.SearchFragment
 import com.google.android.material.bottomnavigation.BottomNavigationItemView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: MainActivityBinding

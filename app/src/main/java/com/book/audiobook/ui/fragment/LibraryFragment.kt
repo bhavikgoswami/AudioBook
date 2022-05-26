@@ -60,10 +60,8 @@ class LibraryFragment : Fragment() ,AudioBookAdapter.OnItemClickListener {
 
         // Instantiate the navController using the NavHostFragment
         navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
-        val backStackEntry = navController.getBackStackEntry(R.id.audio_nav_graph)
-        viewModel = ViewModelProvider(backStackEntry,
-            HiltViewModelFactory(requireContext(), backStackEntry)
-        )[AudioBookViewModel::class.java]
+        val backStackEntry = navController.getBackStackEntry(R.id.nav_graph)
+        viewModel = ViewModelProvider(backStackEntry, HiltViewModelFactory(requireContext(), backStackEntry))[AudioBookViewModel::class.java]
 
         // set RecyclerView
         setBookRecyclerView()
