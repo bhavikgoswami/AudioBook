@@ -1,12 +1,12 @@
 package com.book.audiobook.ui.fragment
 
+
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.fragment.NavHostFragment
+import androidx.fragment.app.Fragment
 import com.book.audiobook.R
 import com.book.audiobook.databinding.AudioBookDetailFragmentBinding
 import com.book.audiobook.model.AudioBook
@@ -15,10 +15,12 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
 
+
 class AudioBookDetailFragment : Fragment() {
 
     private lateinit var audioBook: AudioBook
     private lateinit var binding: AudioBookDetailFragmentBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,5 +48,8 @@ class AudioBookDetailFragment : Fragment() {
             .transition(DrawableTransitionOptions.withCrossFade())
             .placeholder(R.drawable.splash)
             .into(binding.audioBookCover)
+
+
     }
 }
+

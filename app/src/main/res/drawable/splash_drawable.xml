@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?><!-- splash screen background, will be the activity's theme background -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:drawable="@color/theme" />
+    <item android:drawable="@color/white" />
 
     <item>
         <bitmap

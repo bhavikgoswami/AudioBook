@@ -15,43 +15,58 @@
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mainConLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             tools:context=".ui.fragment.AudioBookDetailFragment">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/arrowDownImageView"
-                android:layout_width="wrap_content"
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/mToolbar"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_16sdp"
-                android:layout_marginTop="@dimen/_40sdp"
-                android:src="@drawable/ic_arrow_down"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-
-                android:id="@+id/bookTitleDetailTxtView"
-                style="@style/TextViewBookTitleDetailNameStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_40sdp"
-                android:text="@{audioBook.bookName}"
-                app:layout_constraintEnd_toStartOf="@+id/moreSquareImageView"
-                app:layout_constraintHorizontal_bias="0.401"
-                app:layout_constraintStart_toEndOf="@+id/arrowDownImageView"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/moreSquareImageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_40sdp"
-                android:layout_marginEnd="@dimen/_16sdp"
-                android:src="@drawable/ic_more_square"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_8sdp">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/arrowDownImageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="centerInside"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_arrow_back" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/bookTitleDetailTxtView"
+                        style="@style/TextViewBookTitleDetailNameStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginEnd="@dimen/_8sdp"
+                        android:layout_toStartOf="@+id/moreSquareImageView"
+                        android:layout_toEndOf="@+id/arrowDownImageView"
+                        android:text="@{audioBook.bookName}" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/moreSquareImageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="centerInside"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_more_menu" />
+                </RelativeLayout>
+            </androidx.appcompat.widget.Toolbar>
+
+
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/bookImageCardView"
@@ -61,7 +76,7 @@
                 app:cardCornerRadius="@dimen/_8sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bookTitleDetailTxtView">
+                app:layout_constraintTop_toBottomOf="@+id/mToolbar">
 
                 <ImageView
                     android:id="@+id/audioBookCover"
@@ -94,17 +109,18 @@
                 app:layout_constraintStart_toStartOf="@+id/bookTitleTxtView"
                 app:layout_constraintTop_toBottomOf="@+id/bookTitleTxtView" />
 
-            <!-- <com.google.android.exoplayer2.ui.PlayerView
-                 android:id="@+id/playerView"
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:layout_marginStart="@dimen/_44sdp"
-                 android:layout_marginEnd="@dimen/_44sdp"
-                 android:layout_marginTop="@dimen/_20sdp"
-                 app:layout_constraintBottom_toBottomOf="parent"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintStart_toStartOf="@+id/bookAuthorNameTxtView"
-                 app:layout_constraintTop_toBottomOf="@+id/bookAuthorNameTxtView" />-->
+
+
+            <com.google.android.exoplayer2.ui.PlayerView
+                android:id="@+id/playerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_44sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_44sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/bookAuthorNameTxtView"
+                app:layout_constraintTop_toBottomOf="@+id/bookAuthorNameTxtView" />
 
             <LinearLayout
                 android:id="@+id/playLinLayout"
@@ -126,6 +142,7 @@
                     android:src="@drawable/ic_volume_up" />
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/backwordBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -133,12 +150,14 @@
                     android:src="@drawable/ic_arrow_left_circle" />
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/playBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="20"
                     android:src="@drawable/ic_play" />
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/forwordBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -146,6 +165,7 @@
                     android:src="@drawable/ic_arrow_right_circle" />
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/sendBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -167,6 +187,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/playLinLayout">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/bookmarkBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -174,6 +195,7 @@
                     android:src="@drawable/ic_bookmark" />
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/chapterBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -181,6 +203,7 @@
                     android:src="@drawable/ic_chapter" />
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/speedBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -188,6 +211,7 @@
                     android:src="@drawable/ic_speed" />
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/downloadBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
