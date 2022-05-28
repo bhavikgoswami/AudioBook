@@ -55,77 +55,7 @@ class AudioBookDetailFragment : Fragment() {
             .placeholder(R.drawable.splash)
             .into(binding.audioBookCover)
 
-        playSong(false,audioBook.bookAudioUrl)
     }
 
-    private fun playSong(isAlreadyPlaying: Boolean, Url: String) {
-        var filePath = Url.substring(Url.lastIndexOf('/') + 1, Url.length)
-        val tempName: String = filePath.replace(".", "_")
-        val name = tempName.split("_").toTypedArray()
-        if (!isAlreadyPlaying) {
-            player = if (player != null && player.playWhenReady) {
-                player.stop()
-                player.release()
-                ExoPlayerFactory.newSimpleInstance(
-                    this,
-                    DefaultTrackSelector(DefaultBandwidthMeter.Builder().build())
-                )
-            } else {
-                ExoPlayer. .newSimpleInstance(
-                    this,
-                    DefaultTrackSelector(DefaultBandwidthMeter.Builder().build())
-                )
-            }
-            val dialog = ProgressDialog(requireContext())
-            dialog.setMessage(getString(R.string.buffering))
-            dialog.setCancelable(true)
-            dialog.show()
-            val dataSourceFactory: DataSource.Factory = CacheDataSourceFactory(
-                VideoCache.getInstance(
-                    name[0]
-                ), DefaultDataSourceFactory(this, "brahmakumaris")
-            )
-            val mediaSource: MediaSource =
-                Factory(dataSourceFactory).createMediaSource(Uri.parse(Url))
-            player.prepare(mediaSource)
-            player.playWhenReady = true
-            player.seekToDefaultPosition()
-            player.addListener(object : EventListener() {
-                fun onTimelineChanged(timeline: Timeline?, manifest: Any?, reason: Int) {}
-                fun onTracksChanged(
-                    trackGroups: TrackGroupArray?,
-                    trackSelections: TrackSelectionArray?
-                ) {
-                }
-
-                fun onLoadingChanged(isLoading: Boolean) {}
-                fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
-                    if (playbackState == PlaybackStateCompat.STATE_PLAYING) {
-                        dialog.cancel()
-                    }
-                }
-
-                fun onRepeatModeChanged(repeatMode: Int) {}
-                fun onShuffleModeEnabledChanged(shuffleModeEnabled: Boolean) {}
-                fun onPlayerError(error: ExoPlaybackException?) {}
-                fun onPositionDiscontinuity(reason: Int) {
-                    //THIS METHOD GETS CALLED FOR EVERY NEW SOURCE THAT IS PLAYED
-                    dialog.cancel()
-                }
-
-                fun onPlaybackParametersChanged(playbackParameters: PlaybackParameters?) {}
-                fun onSeekProcessed() {}
-            })
-            //            imageview.setImageResource(R.drawable.ic_pause);
-//            imageview.setTag(true);
-        } else {
-//            imageview.setTag(false);
-            player.playWhenReady = false
-            player.stop()
-            stopMediaPlayer()
-
-//            imageview.setImageResource(R.drawable.ic_play);
-        }
-    }
 }
 
