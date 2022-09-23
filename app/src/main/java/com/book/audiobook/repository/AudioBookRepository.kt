@@ -40,10 +40,19 @@ class AudioBookRepository @Inject constructor() {
         appDatabase.bookDao()!!.insertAllBooks(bookList)
     }
 
-    // Get Book from the dabase for the selected book ID
+    // Get Book from the database for the selected book ID
     fun getSelectedBook(id: Int): AudioBook? {
         return appDatabase.bookDao()!!.getSelectedBook(id)
     }
 
+    // Set favorite Book
+    fun setFavoriteBook(isFavorite: Boolean,id: Int) {
+        return appDatabase.bookDao()!!.setFavoriteBook(isFavorite ,id)
+    }
+
+    // get Favorite book List
+    fun getFavoriteBooks(isFavorite: Boolean): LiveData<List<AudioBook?>?>{
+        return appDatabase.bookDao()!!.getFavoriteBooks(isFavorite)
+    }
 
 }

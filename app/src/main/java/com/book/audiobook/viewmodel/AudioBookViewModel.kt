@@ -33,6 +33,7 @@ class AudioBookViewModel @Inject constructor() : ViewModel() {
      * @return bookLiveList
      */
     var bookLiveList: LiveData<List<AudioBook?>?>? = null
+    var bookFavoriteList: LiveData<List<AudioBook?>?>? = null
 
 
     /**
@@ -40,6 +41,7 @@ class AudioBookViewModel @Inject constructor() : ViewModel() {
      */
     fun init() {
         bookLiveList = repository.getBookList()
+        bookFavoriteList = repository.getFavoriteBooks(isFavorite = true)
     }
 
     //Start worker to sync book record with server and update database
@@ -74,6 +76,16 @@ class AudioBookViewModel @Inject constructor() : ViewModel() {
      */
     fun getSelectedBook(id: Int) {
         getSelectedBook.value = repository.getSelectedBook(id)
+    }
+
+    // Set favorite Book
+    fun setAsFavorite(isFavorite: Boolean,id: Int) {
+        return repository.setFavoriteBook(isFavorite ,id)
+    }
+
+
+    fun getFavoriteBooks(isFavorite: Boolean): LiveData<List<AudioBook?>?>{
+        return repository.getFavoriteBooks(isFavorite)
     }
 
     companion object {

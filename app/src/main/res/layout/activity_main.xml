@@ -13,9 +13,9 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/mToolbar"
-            app:layout_constraintTop_toTopOf="@+id/icon_horizontal_top"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/icon_horizontal_top">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -36,6 +36,7 @@
                     android:layout_marginEnd="@dimen/_16sdp"
                     android:contentDescription="@string/app_name"
                     android:src="@drawable/ic_setting"
+                    android:visibility="gone"
                     app:tint="@color/theme" />
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
@@ -46,11 +47,11 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:defaultNavHost="true"
+            app:layout_constraintBottom_toBottomOf="@id/bottomNavigationView"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
             app:layout_constraintTop_toBottomOf="@id/mToolbar"
-            app:layout_constraintBottom_toBottomOf="@id/bottomNavigationView"
             app:navGraph="@navigation/nav_graph_main" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView

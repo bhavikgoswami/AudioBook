@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/libraryFragment"
         android:name="com.book.audiobook.ui.fragment.LibraryFragment"
-        android:label="LibrayFragment"
+        android:label="LibraryFragment"
         tools:layout="@layout/fragment_library">
         <action
             android:id="@+id/action_libraryFragment_to_audioBookDetailFragment"
@@ -15,10 +15,14 @@
     </fragment>
 
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.book.audiobook.ui.fragment.HomeFragment"
-        android:label="HomeFragment"
-        tools:layout="@layout/fragment_home">
+        android:id="@+id/favoriteFragment"
+        android:name="com.book.audiobook.ui.fragment.FavoritesFragment"
+        android:label="FavoriteFragment"
+        tools:layout="@layout/fragment_favorite">
+
+        <action
+            android:id="@+id/action_favoriteFragment_to_audioBookDetailFragment"
+            app:destination="@id/audioBookDetailFragment" />
 
     </fragment>
 
@@ -27,6 +31,9 @@
         android:name="com.book.audiobook.ui.fragment.AudioBookDetailFragment"
         android:label="AudioBookDetailFragment"
         tools:layout="@layout/fragment_audio_book_detail">
+        <action
+            android:id="@+id/action_audioBookDetailFragment_to_libraryFragment"
+            app:destination="@id/libraryFragment" />
         <argument
             android:name="audioBook"
             app:argType="com.book.audiobook.model.AudioBook" />

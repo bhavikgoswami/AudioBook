@@ -33,4 +33,18 @@ interface AudioBookDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAllBooks(book: List<AudioBook?>?)
 
+    /**
+     * set favorite book in book_table
+     */
+    @Query("UPDATE audio_book_table SET isFavorites = :isFavorite WHERE bookID = :id")
+    fun setFavoriteBook(isFavorite: Boolean, id: Int)
+
+
+    /**
+     * get Favorite books List from book_table
+     */
+    @Query("SELECT * FROM audio_book_table WHERE isFavorites = :isFavorite")
+    fun getFavoriteBooks(isFavorite: Boolean): LiveData<List<AudioBook?>?>
+
+
 }

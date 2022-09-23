@@ -17,6 +17,5 @@ public class AudioBookApplication extends Application {
         super.onCreate();
         Paper.init(getApplicationContext());
 
-
     }
 }

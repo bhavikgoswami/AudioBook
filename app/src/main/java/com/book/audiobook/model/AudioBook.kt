@@ -21,5 +21,6 @@ data class AudioBook(
     @SerializedName("book_language")
     val bookLanguage: String,
     @SerializedName("book_name")
-    val bookName: String
+    val bookName: String,
+    val isFavorites: Boolean
 ) : Serializable

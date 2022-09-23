@@ -1,4 +1,4 @@
-package com.witnovus.book.ui.adapters
+package com.book.audiobook.ui.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import android.view.LayoutInflater
 import com.book.audiobook.R
-import com.book.audiobook.databinding.AudioBookAdapterBinding
+import com.book.audiobook.databinding.FavoriteBookAdapterBinding
 import com.book.audiobook.model.AudioBook
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
@@ -18,23 +18,22 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 /**
  * This Adapter class is used to show list of Book with details
  */
-class AudioBookAdapter(
+class FavoritesBooksAdapter(
     var context: Context,
     private var bookList: ArrayList<AudioBook?>,
     private var onItemClickListener: OnItemClickListener
-) : RecyclerView.Adapter<AudioBookAdapter.ViewHolder>() {
-    private lateinit var binding: AudioBookAdapterBinding
-    private lateinit var authorName: String
-    private lateinit var bookPublishInformation: String
+) : RecyclerView.Adapter<FavoritesBooksAdapter.ViewHolder>() {
+    private lateinit var binding: FavoriteBookAdapterBinding
 
     interface OnItemClickListener {
         fun onItemClick(audioBook: ArrayList<AudioBook?>,position: Int)
+        fun onRemove(position: Int)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         binding = DataBindingUtil.inflate(
             LayoutInflater.from(parent.context),
-            R.layout.audio_book_item, parent,
+            R.layout.favorite_book_item, parent,
             false
         )
         return ViewHolder(binding)
@@ -64,6 +63,10 @@ class AudioBookAdapter(
                    }*/
             }
         }
+        holder.binding.removeButton.setOnClickListener {
+            onItemClickListener.onRemove(position)
+
+        }
 
     }
 
@@ -71,7 +74,7 @@ class AudioBookAdapter(
         return bookList.size
     }
 
-    class ViewHolder(val binding: AudioBookAdapterBinding) : RecyclerView.ViewHolder(
+    class ViewHolder(val binding: FavoriteBookAdapterBinding) : RecyclerView.ViewHolder(
         binding.root
     )
 

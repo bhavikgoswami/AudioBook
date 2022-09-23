@@ -9,8 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="theme">#4838D1</color>
     <color name="disable">#636381</color>
-    <color name="light_grey">#E9E9E9</color>
-    <color name="grey">#858585</color>
+    <color name="light_gray">#E9E9E9</color>
+    <color name="gray">#858585</color>
     <color name="color_neutral">#2E2E5D</color>
     <color name="color_neutral_black">#010104</color>
 

@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, bundle ->
             when (destination.id) {
-                R.id.homeFragment,
+                R.id.favoriteFragment,
                 R.id.searchFragment,
                 R.id.libraryFragment,
                 -> {
